@@ -9,8 +9,15 @@
 
     <script src="https://kit.fontawesome.com/c8e4d183c2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
+    <script src="index.js" defer></script>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("hDCgqlu9cChmWH-zT");
+        })();
+    </script>
 </head>
 
 <body>
@@ -34,14 +41,14 @@
                             link__hover-effect--black
                         ">Projects</a>
                 </li>
-                <li class="nav__link">
+                <li class="nav__link" onClick="toggleModal()">
                     <a href="#" class="
                             nav__link--anchor
                             link__hover-effect
                             link__hover-effect--black
                         ">Contact</a>
                 </li>
-                <li class="nav__link click">
+                <li class="nav__link click" onClick="toggleContrast()">
                     <a href="#" class="
                             nav__link--anchor
                             link__hover-effect
@@ -58,7 +65,7 @@
                     I'm a <b class="green">Frontend Software Engineer</b> with a passion for creating beautiful
                     applications that are simple to use with an amazing user experience.
                     <br>
-                    Here's a little more <b class="green">about me.</b>
+                    Here's a little more <b class="green click" onClick="toggleModal()">about me.</b>
                 </p>
                 <div class="social__list">
                     <a href="" target="_blank" class="social__link click">
@@ -73,7 +80,7 @@
                 </div>
             </div>
         </header>
-        <button class="mail__btn click">
+        <button class="mail__btn click" onClick="toggleModal()"">
             <img class="mail__btn--img" src="assets/envelope-solid.svg" alt="">
         </button>
         <a href="#projects" class="scroll">
@@ -83,27 +90,63 @@
             <div class="modal__half modal__about">
                 <h3 class="modal__title modal__title--about">Some info about me.</h3>
                 <h4 class="modal__sub-title modal__sub-title--about">Frontend Software Engineer.</h4>
-                <p class="modal__para">I'm a <b class="green">Frontend Software Engineer</b> with a passion for creating beautiful
-                    applications that are simple to use with an amazing user experience.
+                <p class="modal__para">I'm a 22 year-old <b class="green">Frontend Software Engineer</b> with a passion
+                    for creating beautiful
+                    applications that are simple to use with an amazing <b class="green">user experience.</b>
                     <br>
                     I currently work on difficult engineering problems,
                 </p>
                 <div class="modal__languages">
                     <figure class="modal__language">
                         <img class="modal__language--img" src="assets/HTML5_Badge.svg" alt="HTML">
+                        <span class="language__name">HTML</span>
                     </figure>
                     <figure class="modal__language">
                         <img class="modal__language--img" src="assets/CSS3_logo.svg" alt="CSS">
+                        <span class="language__name">CSS</span>
                     </figure>
                     <figure class="modal__language">
                         <img class="modal__language--img" src="assets/javascript-svg.svg" alt="Javascript">
+                        <span class="language__name">Java</span>
                     </figure>
                     <figure class="modal__language">
                         <img class="modal__language--img" src="assets/React-icon.svg" alt="React">
+                        <span class="language__name">HTML</span>
                     </figure>
                 </div>
             </div>
-            <div class="modal__half modal__contact">Let's chat!</div>
+            <div class="modal__half modal__contact">
+                <img class="modal__exit click" onClick="toggleModal()" src="assets/xmark-solid.svg" alt="">
+                <h3 class="modal__title modal__title--contact">
+                    Let's chat!
+                </h3>
+                <h3 class="modal__sub-title modal__sub-title--contact">
+                    I'd love to hear from you.
+                </h3>
+                <form id="contact__form" onsubmit="contact(event)">
+                    <div class="form__item">
+                        <label class="form__item--label">Name</label>
+                        <input class="input" name="user_name" type="text" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Email</label>
+                        <input class="input" name="user_email" type="email" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label">Message</label>
+                        <textarea class="input" name="message" type="text" required></textarea>
+                    </div>
+                    <button id="contact__submit" class="form__submit">
+                        Send it my way
+                    </button>
+                </form>
+                <div class="modal__overlay modal__overlay--loading">
+                    <img class="overlay__spinner" src="assets/spinner-solid.svg" alt="">
+                </div>
+                <div class="modal__overlay modal__overlay--success">
+                    Thanks for reaching out! Looking forward to getting back to you.
+                </div>
+            </div>
         </div>
     </section>
     <section id="projects">
