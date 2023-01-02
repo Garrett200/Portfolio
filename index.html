@@ -27,7 +27,7 @@
                 <img id="self-logo" src="assets/gh-logo.png" alt="GH Logo">
             </figure>
             <ul class="nav__link--list">
-                <li class="nav__link">
+                <li class="nav__link" onClick="toggleModal()">
                     <a href="#" class="
                             nav__link--anchor
                             link__hover-effect
@@ -35,7 +35,7 @@
                         ">About</a>
                 </li>
                 <li class="nav__link">
-                    <a href="#" class="
+                    <a href="#projects" class="
                             nav__link--anchor
                             link__hover-effect
                             link__hover-effect--black
@@ -80,9 +80,11 @@
                 </div>
             </div>
         </header>
-        <button class="mail__btn click" onClick="toggleModal()"">
-            <img class="mail__btn--img" src="assets/envelope-solid.svg" alt="">
-        </button>
+        <a href="#">
+            <button class="mail__btn click" onClick="toggleModal()"">
+                <img class=" mail__btn--img" src="assets/envelope-solid.svg" alt="">
+            </button>
+        </a>
         <a href="#projects" class="scroll">
             <div class="scroll__icon click"></div>
         </a>
@@ -201,25 +203,25 @@
             <div class="row footer__row">
                 <img class="footer__logo--img" src="assets/gh-logo.png" alt="">
                 <div class="footer__social--list">
-                    <a href="#" class="
+                    <a href="#" target="_blank" class="
                     footer__social--link
                     link__hover-effect
                     link__hover-effect--white">
                         Github
                     </a>
-                    <a href="#" class="
+                    <a href="#" target="_blank" class="
                     footer__social--link
                     link__hover-effect
                     link__hover-effect--white">
                         LinkedIn
                     </a>
-                    <a href="#" class="
+                    <a href="#" target="_blank" onclick="toggleModal()" class="
                     footer__social--link
                     link__hover-effect
                     link__hover-effect--white">
                         Contact
                     </a>
-                    <a href="#" class="
+                    <a href="ASSETS/EXAMPLE RESUME" target="_blank" class="
                     footer__social--link
                     link__hover-effect
                     link__hover-effect--white">
