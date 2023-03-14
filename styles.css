@@ -594,7 +594,27 @@ nav {
 }
 
 .project {
-    z-index: 10;
+    margin-top: 68px;
+}
+
+.projects__list {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* PROJECT ZOOM */
+
+.project__blur {
+    display: flex;
+    position: fixed;
+    z-index: -100;
+    top: 0;
+    left: 0;
+    background-color: #242424;
+    height: 100vh;
+    width: 100vw;
 }
 
 /*
@@ -691,6 +711,7 @@ footer {
     top: 80vh;
     left: 80vw;
 }
+
 
 
 /* Small phones, tablets, large smart phones */

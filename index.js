@@ -29,15 +29,15 @@ function contact(event) {
             'template_sgafzrp',
             event.target,
             'hDCgqlu9cChmWH-zT'
-    ).then(() => {
-        loading.classList.remove("modal__overlay--visible");
-        success.classList += " modal__overlay--visible";
-    }).catch(() => {
-        loading.classList.remove("modal__overlay--visible");
-        alert(
-            "The email service is temporarily unavailable. Please contact me directly at garrettjrh@live.com"
-        )
-    })
+        ).then(() => {
+            loading.classList.remove("modal__overlay--visible");
+            success.classList += " modal__overlay--visible";
+        }).catch(() => {
+            loading.classList.remove("modal__overlay--visible");
+            alert(
+                "The email service is temporarily unavailable. Please contact me directly at garrettjrh@live.com"
+            )
+        })
 }
 
 function toggleContrast() {
@@ -60,3 +60,18 @@ function toggleModal() {
     isModalOpen = true;
     document.body.classList += " modal--open";
 }
+
+const blurhtml = document.querySelector(".project__blur");
+window.addEventListener('load', function () {
+    var imgs = document.getElementsByClassName('project');
+    for (var i = 0; i < imgs.length; i++) {
+        imgs[i].addEventListener('click', function () {
+            for (var j = 0; j < imgs.length; j++) {
+                imgs[j].style.transform = 'scale(1)';
+            }
+            blurhtml.style.zIndex = "10";
+            this.style.zIndex = "11";
+            document.body.style.overflow = "hidden";
+        });
+    }
+});
