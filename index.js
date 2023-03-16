@@ -95,24 +95,45 @@ window.addEventListener('load', function () {
 });
 */
 
+var wrappers = document.getElementsByClassName('project__wrapper')
+var descriptions = document.getElementsByClassName('project__description')
+var imgs = document.getElementsByClassName('project__img')
+window.addEventListener('load', function () {
+    var projects = document.getElementsByClassName('project');
+    Array.from(projects).forEach(function (project) {
+        project.addEventListener('click', function () {
+            project.classList.add('project-disabled');
+            Array.from(descriptions).forEach(function (description) {
+                description.style.display = "none";
+                description.classList.add('project-disabled');
+            })
+            Array.from(imgs).forEach(function (img) {
+                img.classList.add('project-disabled');
+            })
+            Array.from(wrappers).forEach(function (wrapper) {
+                wrapper.classList.add('project-disabled');
+            })
+            var fullscreen = document.createElement('div');
+            fullscreen.classList.add('fullscreen');
 
-
-function projectFunc() {
-    var img = document.getElementsByClassName('project');
-    img.addEventListener('click', function () {
-
-        var fullscreen = document.createElement('div');
-        fullscreen.classList.add('fullscreen');
-
-        var fullscreenImg = document.createElement('div');
-        fullscreenImg.innerHTML = img;
-        fullscreen.appendChild(fullscreenImg);
-        document.body.appendChild(fullscreen);
-
-        fullscreenImg.addEventListener('click', function () {
-
-            fullscreen.remove();
+            var fullscreenProject = project.cloneNode(true);
+            fullscreenProject.classList.add('fullscreen-project');
+            fullscreen.appendChild(fullscreenProject);
+            document.body.appendChild(fullscreen);
+            fullscreen.addEventListener('click', function () {
+                fullscreen.remove();
+                project.classList.remove('project-disabled');
+                Array.from(imgs).forEach(function (img) {
+                    img.classList.remove('project-disabled');
+                })
+                Array.from(wrappers).forEach(function (wrapper) {
+                    wrapper.classList.remove('project-disabled');
+                })
+                Array.from(descriptions).forEach(function (description) {
+                    description.style.display = "flex";
+                    description.classList.remove('project-disabled');
+                });
+            });
         });
     });
-};
-projectFunc();
+});
