@@ -63,77 +63,59 @@ function toggleModal() {
 
 
 
-/*
-let projectOpen;
-const blurhtml = document.querySelector(".project__blur");
-const visible = document.querySelector(".blur-visible");
-window.addEventListener('load', function () {
-    var imgs = document.getElementsByClassName('project');
-    for (var i = 0; i < imgs.length; i++) {
-        imgs[i].addEventListener('click', function () {
-            for (var j = 0; j < imgs.length; j++) {
-                imgs[j].style.transform = 'scale(1)';
-            }
-            let projectOpen = true;
-            blurhtml.style.display = "flex";
-            blurhtml.style.zIndex = "10";
-            this.style.zIndex = "11";
-            document.body.style.overflow = "hidden";
-            this.style.position = 'fixed';
-            this.style.left = (window.innerWidth - this.offsetWidth) / 2 + 'px';
-            this.style.top = (window.innerHeight - this.offsetHeight) / 2 + 'px';
-            if (projectOpen) {
-                let projectOpen = false;
-                blurhtml.style.display = "none";
-                blurhtml.style.zIndex = "10";
-                this.style.zIndex = "1";
-                document.body.style.overflow = "scroll";
-                this.style.position = 'relative';
-            }
-        });
-    }
-});
-*/
 
-var wrappers = document.getElementsByClassName('project__wrapper')
-var descriptions = document.getElementsByClassName('project__description')
-var imgs = document.getElementsByClassName('project__img')
-window.addEventListener('load', function () {
-    var projects = document.getElementsByClassName('project');
-    Array.from(projects).forEach(function (project) {
-        project.addEventListener('click', function () {
-            project.classList.add('project-disabled');
-            Array.from(descriptions).forEach(function (description) {
-                description.style.display = "none";
-                description.classList.add('project-disabled');
-            })
-            Array.from(imgs).forEach(function (img) {
-                img.classList.add('project-disabled');
-            })
-            Array.from(wrappers).forEach(function (wrapper) {
-                wrapper.classList.add('project-disabled');
-            })
-            var fullscreen = document.createElement('div');
-            fullscreen.classList.add('fullscreen');
 
-            var fullscreenProject = project.cloneNode(true);
-            fullscreenProject.classList.add('fullscreen-project');
-            fullscreen.appendChild(fullscreenProject);
-            document.body.appendChild(fullscreen);
-            fullscreen.addEventListener('click', function () {
-                fullscreen.remove();
-                project.classList.remove('project-disabled');
-                Array.from(imgs).forEach(function (img) {
-                    img.classList.remove('project-disabled');
-                })
-                Array.from(wrappers).forEach(function (wrapper) {
-                    wrapper.classList.remove('project-disabled');
-                })
-                Array.from(descriptions).forEach(function (description) {
-                    description.style.display = "flex";
-                    description.classList.remove('project-disabled');
-                });
-            });
-        });
+
+// Get all the elements with the class name "project"
+const projectElements = document.querySelectorAll('.project');
+
+// Loop through all the project elements
+projectElements.forEach(projectElement => {
+  // Get the project image inside the current project element
+  const projectImage = projectElement.querySelector('.project__img');
+
+  // Add a click event listener to the current project element
+  projectElement.addEventListener('click', () => {
+    // Create a new div element to display the bigger image with opaque background
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+
+    // Create a new image element and set its source to the project image's source
+    const biggerImage = document.createElement('img');
+    biggerImage.src = projectImage.src;
+
+    const leftbtn = document.createElement('button');
+    const rightbtn = document.createElement('button');
+    leftbtn.classList.add('leftbtn')
+    rightbtn.classList.add('rightbtn')
+    overlay.appendChild(leftbtn)
+
+    // Add the bigger image to the overlay
+    overlay.appendChild(biggerImage);
+
+    overlay.appendChild(rightbtn)
+
+    // Add the overlay to the body element
+    document.body.appendChild(overlay);
+
+    // Set the z-index of the project image to be higher than the overlay
+    projectImage.style.zIndex = '9999';
+
+    // Disable scrolling while the overlay is displayed
+    document.body.style.overflow = 'hidden';
+
+    // Add a click event listener to the overlay to remove it when clicked
+    overlay.addEventListener('click', () => {
+      // Remove the overlay from the DOM
+      document.body.removeChild(overlay);
+
+      // Reset the z-index of the project image
+      projectImage.style.zIndex = 'auto';
+
+
+      // Enable scrolling
+      document.body.style.overflow = 'auto';
+      
     });
+  });
 });
