@@ -65,7 +65,7 @@ function toggleModal() {
 
 
 
-
+/*
 // Get all the elements with the class name "project"
 const projectElements = document.querySelectorAll('.project');
 
@@ -84,11 +84,21 @@ projectElements.forEach(projectElement => {
     const biggerImage = document.createElement('img');
     biggerImage.src = projectImage.src;
 
-    const leftbtn = document.createElement('button');
-    const rightbtn = document.createElement('button');
+    const leftArrow = document.createElement('div');
+    const rightArrow = document.createElement('div');
+    leftArrow.classList.add('leftArrow');
+    rightArrow.classList.add('rightArrow');
+    leftArrow.src = 'chevron-left-solid.svg';
+    rightArrow.src = 'chevron-right-solid.svg';
+    const leftbtn = document.createElement('a');
+    const rightbtn = document.createElement('a');
     leftbtn.classList.add('leftbtn')
     rightbtn.classList.add('rightbtn')
+    leftbtn.innerHTML = leftArrow;
+    rightbtn.innerHTML = rightArrow;
     overlay.appendChild(leftbtn)
+    rightbtn.appendChild(rightArrow)
+    leftbtn.appendChild(leftArrow)
 
     // Add the bigger image to the overlay
     overlay.appendChild(biggerImage);
@@ -118,4 +128,67 @@ projectElements.forEach(projectElement => {
       
     });
   });
+});
+*/
+// Get all the elements with the class name "project"
+const projectElements = document.querySelectorAll('.project');
+
+// Loop through all the project elements
+projectElements.forEach((projectElement, index) => {
+    // Get the project image inside the current project element
+    const projectImage = projectElement.querySelector('.project__img');
+    const projectImages = Array.from(projectElement.querySelectorAll('.project__img'));
+
+    // Add a click event listener to the current project element
+    projectElement.addEventListener('click', () => {
+
+        // Create a new div element to display the bigger image with opaque background
+        const overlay = document.createElement('div');
+        overlay.classList.add('overlay');
+
+        // Create a new image element and set its source to the project image's source
+        const biggerImage = document.createElement('img');
+        biggerImage.src = projectImage.src;
+
+        // Create left and right arrow buttons
+        const leftArrow = document.createElement('img');
+        const rightArrow = document.createElement('img');
+        leftArrow.classList.add('leftArrow');
+        rightArrow.classList.add('rightArrow');
+        leftArrow.src = 'assets/chevron-left-solid.svg';
+        rightArrow.src = 'assets/chevron-right-solid.svg';
+        const leftBtn = document.createElement('button');
+        const rightBtn = document.createElement('button');
+        leftBtn.classList.add('leftbtn');
+        rightBtn.classList.add('rightbtn');
+        leftBtn.appendChild(leftArrow);
+        rightBtn.appendChild(rightArrow);
+        overlay.appendChild(leftBtn);
+
+        // Add the bigger image to the overlay
+        overlay.appendChild(biggerImage);
+
+        overlay.appendChild(rightBtn);
+
+        // Add the overlay to the body element
+        document.body.appendChild(overlay);
+        // Set the z-index of the project image to be higher than the overlay
+        projectImage.style.zIndex = '9999';
+
+        // Disable scrolling while the overlay is displayed
+        document.body.style.overflow = 'hidden';
+
+        // Add a click event listener to the overlay to remove it when clicked
+        overlay.addEventListener('click', () => {
+            // Remove the overlay from the DOM
+            document.body.removeChild(overlay);
+
+            // Reset the z-index of the project image
+            projectImage.style.zIndex = 'auto';
+
+
+            // Enable scrolling
+            document.body.style.overflow = 'auto';
+        })
+    });
 });
