@@ -150,6 +150,30 @@ projectElements.forEach((projectElement, index) => {
         const biggerImage = document.createElement('img');
         biggerImage.src = projectImage.src;
 
+        const linksWrapper = document.createElement('div');
+        linksWrapper.classList.add('linksWrapper');
+
+
+        const linkResume = document.createElement('a');
+        const linkGithub = document.createElement('a');
+        const socialLink1 = document.createElement('img');
+        const socialLink2 = document.createElement('img');
+
+        socialLink1.classList.add('socialLink');
+        socialLink2.classList.add('socialLink');
+
+        socialLink1.src = 'assets/github.svg'
+        socialLink2.src = 'assets/link-solid.svg'
+
+        linkGithub.appendChild(socialLink1)
+        linkResume.appendChild(socialLink2)
+
+        linksWrapper.appendChild(linkGithub)
+        linksWrapper.appendChild(linkResume)
+
+        linkResume.classList.add('linkResume')
+        linkGithub.classList.add('linkGithub');
+
         // Create left and right arrow buttons
         const leftArrow = document.createElement('img');
         const rightArrow = document.createElement('img');
@@ -161,12 +185,16 @@ projectElements.forEach((projectElement, index) => {
         const rightBtn = document.createElement('button');
         leftBtn.classList.add('leftbtn');
         rightBtn.classList.add('rightbtn');
+
         leftBtn.appendChild(leftArrow);
         rightBtn.appendChild(rightArrow);
         overlay.appendChild(leftBtn);
 
         // Add the bigger image to the overlay
         overlay.appendChild(biggerImage);
+
+        overlay.appendChild(linkResume)
+        overlay.appendChild(linkGithub)
 
         overlay.appendChild(rightBtn);
 
