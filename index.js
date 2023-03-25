@@ -147,6 +147,10 @@ projectElements.forEach((projectElement, index) => {
         overlay.classList.add('overlay');
 
         // Create a new image element and set its source to the project image's source
+        
+        const projectWrapper = document.createElement('div');
+        projectWrapper.classList.add('projectWrapper')
+        
         const biggerImage = document.createElement('img');
         biggerImage.src = projectImage.src;
 
@@ -191,10 +195,11 @@ projectElements.forEach((projectElement, index) => {
         overlay.appendChild(leftBtn);
 
         // Add the bigger image to the overlay
-        overlay.appendChild(biggerImage);
+        projectWrapper.appendChild(biggerImage);
 
-        overlay.appendChild(linkResume)
-        overlay.appendChild(linkGithub)
+        projectWrapper.appendChild(linksWrapper)
+
+        overlay.appendChild(projectWrapper)
 
         overlay.appendChild(rightBtn);
 
