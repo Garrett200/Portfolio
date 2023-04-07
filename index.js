@@ -61,75 +61,6 @@ function toggleModal() {
     document.body.classList += " modal--open";
 }
 
-
-
-
-
-/*
-// Get all the elements with the class name "project"
-const projectElements = document.querySelectorAll('.project');
-
-// Loop through all the project elements
-projectElements.forEach(projectElement => {
-  // Get the project image inside the current project element
-  const projectImage = projectElement.querySelector('.project__img');
-
-  // Add a click event listener to the current project element
-  projectElement.addEventListener('click', () => {
-    // Create a new div element to display the bigger image with opaque background
-    const overlay = document.createElement('div');
-    overlay.classList.add('overlay');
-
-    // Create a new image element and set its source to the project image's source
-    const biggerImage = document.createElement('img');
-    biggerImage.src = projectImage.src;
-
-    const leftArrow = document.createElement('div');
-    const rightArrow = document.createElement('div');
-    leftArrow.classList.add('leftArrow');
-    rightArrow.classList.add('rightArrow');
-    leftArrow.src = 'chevron-left-solid.svg';
-    rightArrow.src = 'chevron-right-solid.svg';
-    const leftbtn = document.createElement('a');
-    const rightbtn = document.createElement('a');
-    leftbtn.classList.add('leftbtn')
-    rightbtn.classList.add('rightbtn')
-    leftbtn.innerHTML = leftArrow;
-    rightbtn.innerHTML = rightArrow;
-    overlay.appendChild(leftbtn)
-    rightbtn.appendChild(rightArrow)
-    leftbtn.appendChild(leftArrow)
-
-    // Add the bigger image to the overlay
-    overlay.appendChild(biggerImage);
-
-    overlay.appendChild(rightbtn)
-
-    // Add the overlay to the body element
-    document.body.appendChild(overlay);
-
-    // Set the z-index of the project image to be higher than the overlay
-    projectImage.style.zIndex = '9999';
-
-    // Disable scrolling while the overlay is displayed
-    document.body.style.overflow = 'hidden';
-
-    // Add a click event listener to the overlay to remove it when clicked
-    overlay.addEventListener('click', () => {
-      // Remove the overlay from the DOM
-      document.body.removeChild(overlay);
-
-      // Reset the z-index of the project image
-      projectImage.style.zIndex = 'auto';
-
-
-      // Enable scrolling
-      document.body.style.overflow = 'auto';
-      
-    });
-  });
-});
-*/
 // Get all the elements with the class name "project"
 const projectElements = document.querySelectorAll('.project');
 
@@ -163,8 +94,8 @@ projectElements.forEach((projectElement, index) => {
         const socialLink1 = document.createElement('img');
         const socialLink2 = document.createElement('img');
 
-        socialLink1.classList.add('socialLink');
-        socialLink2.classList.add('socialLink');
+        socialLink1.classList.add('socialLink1');
+        socialLink2.classList.add('socialLink2');
 
         socialLink1.src = 'assets/github.svg'
         socialLink2.src = 'assets/link-solid.svg'
